@@ -33,17 +33,14 @@
         }
         self.albumsFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAny options:nil];
         
+        //Enumeration Block
+        [self.albumsFetchResult enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+            [self.albumNames addObject:collection.localizedTitle];
+        }];
+        
+        NSLog(@"This view will appear has run");
+        [self.tableView reloadData];
             }];
-    
-    //Enumeration Block
-    [self.albumsFetchResult enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
-        [self.albumNames addObject:collection.localizedTitle];
-    }];
-
-    NSLog(@"This view will appear has run");
-    [self.tableView reloadInputViews];
-    [self.tableView reloadData];
-    //[self.navigationController pushViewController:self animated:YES];
 }
 
 
