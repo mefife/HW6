@@ -10,11 +10,12 @@
 		C41395541A0DB62400E46095 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C41395531A0DB62400E46095 /* main.m */; };
 		C41395571A0DB62400E46095 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C41395561A0DB62400E46095 /* AppDelegate.m */; };
 		C413955A1A0DB62400E46095 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41395591A0DB62400E46095 /* FirstViewController.m */; };
-		C413955D1A0DB62400E46095 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C413955C1A0DB62400E46095 /* SecondViewController.m */; };
 		C41395601A0DB62400E46095 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C413955E1A0DB62400E46095 /* Main.storyboard */; };
 		C41395621A0DB62400E46095 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41395611A0DB62400E46095 /* Images.xcassets */; };
 		C41395651A0DB62400E46095 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C41395631A0DB62400E46095 /* LaunchScreen.xib */; };
 		C41395711A0DB62400E46095 /* UW_HW6_mefifeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C41395701A0DB62400E46095 /* UW_HW6_mefifeTests.m */; };
+		C455CD281A0FEF2100DDBDF1 /* MEFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C455CD271A0FEF2100DDBDF1 /* MEFTableViewController.m */; };
+		C455CD2B1A101A0D00DDBDF1 /* MEFCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C455CD2A1A101A0D00DDBDF1 /* MEFCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +36,16 @@
 		C41395561A0DB62400E46095 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C41395581A0DB62400E46095 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		C41395591A0DB62400E46095 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		C413955B1A0DB62400E46095 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C413955C1A0DB62400E46095 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C413955F1A0DB62400E46095 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C41395611A0DB62400E46095 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C41395641A0DB62400E46095 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C413956A1A0DB62400E46095 /* UW_HW6_mefifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UW_HW6_mefifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C413956F1A0DB62400E46095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C41395701A0DB62400E46095 /* UW_HW6_mefifeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UW_HW6_mefifeTests.m; sourceTree = "<group>"; };
+		C455CD261A0FEF2100DDBDF1 /* MEFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEFTableViewController.h; sourceTree = "<group>"; };
+		C455CD271A0FEF2100DDBDF1 /* MEFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEFTableViewController.m; sourceTree = "<group>"; };
+		C455CD291A101A0D00DDBDF1 /* MEFCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEFCollectionView.h; sourceTree = "<group>"; };
+		C455CD2A1A101A0D00DDBDF1 /* MEFCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEFCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +91,11 @@
 				C41395561A0DB62400E46095 /* AppDelegate.m */,
 				C41395581A0DB62400E46095 /* FirstViewController.h */,
 				C41395591A0DB62400E46095 /* FirstViewController.m */,
-				C413955B1A0DB62400E46095 /* SecondViewController.h */,
-				C413955C1A0DB62400E46095 /* SecondViewController.m */,
 				C413955E1A0DB62400E46095 /* Main.storyboard */,
+				C455CD261A0FEF2100DDBDF1 /* MEFTableViewController.h */,
+				C455CD271A0FEF2100DDBDF1 /* MEFTableViewController.m */,
+				C455CD291A101A0D00DDBDF1 /* MEFCollectionView.h */,
+				C455CD2A1A101A0D00DDBDF1 /* MEFCollectionView.m */,
 				C41395611A0DB62400E46095 /* Images.xcassets */,
 				C41395631A0DB62400E46095 /* LaunchScreen.xib */,
 				C41395511A0DB62400E46095 /* Supporting Files */,
@@ -224,9 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C413955D1A0DB62400E46095 /* SecondViewController.m in Sources */,
+				C455CD2B1A101A0D00DDBDF1 /* MEFCollectionView.m in Sources */,
 				C41395571A0DB62400E46095 /* AppDelegate.m in Sources */,
 				C413955A1A0DB62400E46095 /* FirstViewController.m in Sources */,
+				C455CD281A0FEF2100DDBDF1 /* MEFTableViewController.m in Sources */,
 				C41395541A0DB62400E46095 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +426,7 @@
 				C41395761A0DB62400E46095 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C41395771A0DB62400E46095 /* Build configuration list for PBXNativeTarget "UW_HW6_mefifeTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +435,7 @@
 				C41395791A0DB62400E46095 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
