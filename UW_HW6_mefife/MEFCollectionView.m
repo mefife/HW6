@@ -34,7 +34,8 @@ static NSString * const CellIdentifer = @"Cell";
 {
     [super viewDidLoad];
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"beep";
+    //self.titleToDisplay = [[NSString alloc] init];
+    self.navigationItem.title = self.titleToDisplay;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CellIdentifer];
     
 }

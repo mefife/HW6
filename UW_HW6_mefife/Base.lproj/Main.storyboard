@@ -102,6 +102,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Ns-9u-Avl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Photos" id="2YN-6Z-XSg"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Cr9-uS-YqP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dKq-Lm-exO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -15,7 +15,7 @@
 @property (nonatomic, strong) PHFetchResult *albumsFetchResult;
 @property (nonatomic, strong) NSMutableArray *albumNames;
 @property MEFCollectionView * collectionView;
-@property UINavigationController * navControllerCollectionView;
+//@property UINavigationController * navControllerCollectionView;
 @end
 
 @implementation MEFTableViewController
@@ -24,24 +24,26 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewDidAppear:YES];
     self.collectionView = [[MEFCollectionView alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
-    self.navControllerCollectionView = [[UINavigationController alloc]initWithRootViewController:self.collectionView];
+    //[self.navigationController pushViewController:self.collectionView animated:YES];
     
     self.albumNames = [[NSMutableArray alloc]init];
-    self.collectionView = [[MEFCollectionView alloc] init];
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         if (status != PHAuthorizationStatusAuthorized){
             return;
         }
         self.albumsFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAny options:nil];
         
-        //Enumeration Block
-        [self.albumsFetchResult enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
-            [self.albumNames addObject:collection.localizedTitle];
-        }];
-    }];
+            }];
     
+    //Enumeration Block
+    [self.albumsFetchResult enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        [self.albumNames addObject:collection.localizedTitle];
+    }];
+
     NSLog(@"This view will appear has run");
-    //[self.tableView reloadData];
+    [self.tableView reloadInputViews];
+    [self.tableView reloadData];
+    //[self.navigationController pushViewController:self animated:YES];
 }
 
 
@@ -55,6 +57,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     NSLog(@"%lu",(unsigned long)self.albumsFetchResult.count);
+    //return 9;
     return self.albumsFetchResult.count;
 }
 
@@ -67,7 +70,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
+    
+    //cell.textLabel.text = @"hello";
     cell.textLabel.text = [self.albumNames objectAtIndex:indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSLog(@"Called");
@@ -89,14 +93,12 @@
 
 -(void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     NSLog(@"My Cell has been tapped");
     //self.collectionView = [[MEFCollectionView alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
-    [self.navControllerCollectionView presentViewController:self.collectionView animated:YES completion:^{
-        
-        NSLog(@"Opened the view");
-        
-    }];
-
+    //[self.navigationController presentViewController:self.collectionView animated:YES completion:nil];
+    self.collectionView.titleToDisplay = [self.albumNames objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:self.collectionView animated:YES];
 }
 
 @end

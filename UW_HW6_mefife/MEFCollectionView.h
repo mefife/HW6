@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MEFCollectionView : UICollectionViewController <UICollectionViewDataSource>
-
+@property NSString * titleToDisplay;
 @end
