@@ -161,12 +161,14 @@ static NSString * const CellIdentifer = @"Cell";
 }
 
 
-#define GAP (0.25f)
+//#define GAP (0.25f)
+#define GAP (10.0f)
 
 -(CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    CGFloat edgeLength = collectionView.frame.size.width/2.0f - GAP;
-    return (CGSize){.width = edgeLength, .height = 80.0f};
+    //CGFloat edgeLength = collectionView.frame.size.width/2.0f - GAP;
+    //return (CGSize){.width = edgeLength, .height = 80.0f};
+    return (CGSize){.width = 50.0f, .height = 50.0f};
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
