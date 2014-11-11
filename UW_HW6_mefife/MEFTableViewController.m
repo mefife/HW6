@@ -39,11 +39,12 @@
         }];
         
         NSLog(@"This view will appear has run");
-        [self.tableView reloadData];
-            }];
+        //[self.tableView reloadData];
         dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
+            [self.tableView reloadData];
         });
+            }];
+    
 }
 
 
