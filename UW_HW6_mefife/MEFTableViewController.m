@@ -12,7 +12,7 @@
 
 
 @interface MEFTableViewController () <UITableViewDelegate ,UITableViewDataSource>
-@property (nonatomic, strong) PHFetchResult *albumsFetchResult;
+
 @property (nonatomic, strong) NSMutableArray *albumNames;
 @property MEFCollectionView * collectionView;
 //@property UINavigationController * navControllerCollectionView;
@@ -41,6 +41,9 @@
         NSLog(@"This view will appear has run");
         [self.tableView reloadData];
             }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        });
 }
 
 
@@ -54,7 +57,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     NSLog(@"%lu",(unsigned long)self.albumsFetchResult.count);
-    //return 9;
     return self.albumsFetchResult.count;
 }
 
@@ -95,6 +97,7 @@
     //self.collectionView = [[MEFCollectionView alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
     //[self.navigationController presentViewController:self.collectionView animated:YES completion:nil];
     self.collectionView.titleToDisplay = [self.albumNames objectAtIndex:indexPath.row];
+    self.collectionView.TableAlbums = self.albumsFetchResult;
     [self.navigationController pushViewController:self.collectionView animated:YES];
 }
 

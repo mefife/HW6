@@ -7,6 +7,8 @@
 //
 
 #import "MEFCollectionView.h"
+#import <Photos/Photos.h>
+#import "MEFTableViewController.h"
 
 
 static NSString * const CellIdentifer = @"Cell";
@@ -25,6 +27,7 @@ static NSString * const CellIdentifer = @"Cell";
     if (!(self = [super initWithCollectionViewLayout:layout])) {
         return nil;
     }
+    
     //self.BirthdayList = [NSMutableArray array];
     return self;
 }
@@ -38,6 +41,7 @@ static NSString * const CellIdentifer = @"Cell";
     self.navigationItem.title = self.titleToDisplay;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CellIdentifer];
     
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated;
@@ -46,6 +50,19 @@ static NSString * const CellIdentifer = @"Cell";
     //    NSLog(@"I have views");
     //    [MEFlabel removeFromSuperview];
     //}
+    
+    //Get photo album requested
+    [self.TableAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *assetCollection, NSUInteger idx, BOOL *stop) {
+        //NSLog(@" Here is....%@",assetCollection.localizedTitle);
+        if (assetCollection.localizedTitle == self.titleToDisplay) {
+            self.AlbumSelectedToView = assetCollection;
+            self.Pictures = [[PHFetchResult alloc] init];
+            self.Pictures = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+            NSLog(@"here is asset %@",assetCollection);
+            //NSLog(@"Please display only once");
+            NSLog(@"Here is the title %@",assetCollection.localizedTitle);
+        }
+    }];
     
 }
 
@@ -57,12 +74,51 @@ static NSString * const CellIdentifer = @"Cell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    
+    NSLog(@"Photo Countsdfser %lu",(unsigned long)self.Pictures.count);
+    return self.Pictures.count;
+    
+    //return self.TableAlbums.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifer forIndexPath:indexPath];
     NSAssert(cell != nil, @"Expected a Cell");
+    
+    
+    // Clear contents of old labels
+    
+    for (UIImageView *MEFlabel in cell.contentView.subviews) {
+        [MEFlabel removeFromSuperview];
+    }
+    //
+    
+    
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
+    __block UIImage * image = [[UIImage alloc] init];
+    
+    PHAsset *thing = [self.Pictures objectAtIndex:indexPath.row];
+    
+    [[PHImageManager defaultManager] requestImageForAsset:thing
+                                               targetSize:cell.contentView.bounds.size
+                                              contentMode:PHImageContentModeAspectFill
+                                                  options:nil
+                                            resultHandler:^(UIImage *result, NSDictionary *info) {
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                            image = result;
+                                                        //NSLog(@"image is: %@", image);
+                                                        });
+    
+                                            }];
+    
+
+    
+    imageView.image = image;
+    NSLog(@" Make this non-nil: %@", imageView.image);
+    
+    [cell.contentView addSubview:imageView];
+    
     // Clear contents of old labels
     
     //for (UILabel *MEFlabel in cell.contentView.subviews) {

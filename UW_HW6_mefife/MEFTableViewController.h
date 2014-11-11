@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 @interface MEFTableViewController : UITableViewController
-
+@property (nonatomic, strong) PHFetchResult *albumsFetchResult;
 @end

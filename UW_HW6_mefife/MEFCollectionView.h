@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 @interface MEFCollectionView : UICollectionViewController <UICollectionViewDataSource>
 @property NSString * titleToDisplay;
+@property PHFetchResult * TableAlbums;
+@property PHAssetCollection * AlbumSelectedToView;
+@property PHFetchResult *Pictures;
 @end
