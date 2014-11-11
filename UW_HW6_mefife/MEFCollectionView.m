@@ -95,18 +95,22 @@ static NSString * const CellIdentifer = @"Cell";
     
     
     
-    UIImageView * imageView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
+    __block UIImageView * imageView = [[UIImageView alloc] initWithFrame:cell.contentView.bounds];
+    //NSLog(@" Make this non-nil: %f", imageView.frame.size.height);
     __block UIImage * image = [[UIImage alloc] init];
+    
     
     PHAsset *thing = [self.Pictures objectAtIndex:indexPath.row];
     
     [[PHImageManager defaultManager] requestImageForAsset:thing
-                                               targetSize:cell.contentView.bounds.size
+                                               targetSize:imageView.frame.size
                                               contentMode:PHImageContentModeAspectFill
                                                   options:nil
                                             resultHandler:^(UIImage *result, NSDictionary *info) {
                                                     dispatch_async(dispatch_get_main_queue(), ^{
                                                             image = result;
+                                                            imageView.image = image;
+                                                            [cell.contentView addSubview:imageView];
                                                         //NSLog(@"image is: %@", image);
                                                         });
     
@@ -114,10 +118,10 @@ static NSString * const CellIdentifer = @"Cell";
     
 
     
-    imageView.image = image;
-    NSLog(@" Make this non-nil: %@", imageView.image);
+    //imageView.image = image;
+    NSLog(@" Make this non-nil: %f", imageView.image.size.width);
     
-    [cell.contentView addSubview:imageView];
+    //[cell.contentView addSubview:imageView];
     
     // Clear contents of old labels
     
